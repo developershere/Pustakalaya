@@ -3,11 +3,11 @@ import sequelize from "../database/dbconfig.js";
 
 const Admin = sequelize.define("admin", {
     name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false
     },
     email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false,
         unique: true,
         validate: {
@@ -23,12 +23,6 @@ const Admin = sequelize.define("admin", {
         allowNull: false
     },
 
-}, { timestamps: false });
-
-Admin.sync().then(() => {
-    console.log("Admin Table Created...")
-}).catch(() => {
-    console.log(err);
-})
+});
 
 export default Admin;
