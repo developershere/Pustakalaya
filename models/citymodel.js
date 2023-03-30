@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/getConnection.js";
 
 const City = sequelize.define("city", {
-    cityName: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     }
@@ -11,6 +11,4 @@ const City = sequelize.define("city", {
 
 export default City;
 
-sequelize.sync().then((result) => {
-    console.log("City Table Created");
-}).catch((err) => { console.log(err) });
+

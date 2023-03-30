@@ -2,15 +2,14 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/getConnection.js";
 
 const State = sequelize.define("state", {
-    stateName: {
+    name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        required: true
+        allowNull: false
+       
     }
-}, { timestamps: false });
+});
 
 
 
 export default State;
 
-sequelize.sync().then((result) => { console.log("State Table Created") }).catch((err) => {console.log(err);})

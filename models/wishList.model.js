@@ -12,8 +12,3 @@ const WishList = sequelize.define("wishList",{
 
 export default WishList;
 
-sequelize.sync().then((result)=>{
-    console.log("Wishlist Table Created");
-}).catch((err)=>{
-    console.log(err);
-})

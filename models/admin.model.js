@@ -23,12 +23,7 @@ const Admin =sequelize.define("admin",{
         allowNull:false
     },
 
-},{timestamps:false});
+});
 
-Admin.sync().then(()=>{
-    console.log("Admin Table Created...")
-}).catch(()=>{
-    console.log(err);
-})
 
 export default Admin;

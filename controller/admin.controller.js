@@ -40,34 +40,3 @@ export const signIn =async(request,response,next)=>{
 
 }
 
-
-export const sign= async(request,response,next)=>{
-  console.log(request.body.email);
- 
-
- 
-
-  let testAccount =await nodeMailer.createTestAccount();
-  console.log(testAccount);
-  let transporter=nodeMailer.createTransport({
-    host:"smtp.ethereal.email",
-    port:587,
-    secure:false,
-    auth: {
-      user: 'rashad.medhurst28@ethereal.email',
-      pass: 'Ebthjvbn6jG14FvT2b'
-    }
-  });
-
-  let info = await transporter.sendMail({
-    from: '"chetna Rathore 👻" <rathorechetna03@gmail.com>', // sender address
-    to: "mausamlodhi326@gmail.com", // list of receivers
-    subject: "Hello pooja", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
-  });
-
-  console.log("Message sent: %s", info.messageId);
-  response.json(info);
-
-}
