@@ -61,6 +61,11 @@ const Book = sequelize.define("book", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    permission: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        default: false
+    },
     pinCode: {
         type: DataTypes.INTEGER(6),
         allowNull: false,
