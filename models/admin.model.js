@@ -1,33 +1,33 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/dbconfig.js";
 
-const Admin =sequelize.define("admin",{
-    name:{
-        type:DataTypes.STRING,
-        allowNull:false
+const Admin = sequelize.define("admin", {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
-    email:{
-       type:DataTypes.STRING,
-       allowNull:false,
-       unique:true,
-       validate:{
-        isEmail:true
-       }
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+            isEmail: true
+        }
     },
-    password:{
-        type:DataTypes.STRING,
-        allowNull:false,
+    password: {
+        type: DataTypes.STRING(100),
+        allowNull: false
     },
-    contact:{
-        type:DataTypes.STRING(10),
-        allowNull:false
+    contact: {
+        type: DataTypes.STRING(10),
+        allowNull: false
     },
 
-},{timestamps:false});
+}, { timestamps: false });
 
-Admin.sync().then(()=>{
+Admin.sync().then(() => {
     console.log("Admin Table Created...")
-}).catch(()=>{
+}).catch(() => {
     console.log(err);
 })
 

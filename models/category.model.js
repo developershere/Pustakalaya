@@ -2,11 +2,11 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/dbconfig.js";
 
 const Category = sequelize.define("category", {
-    categoryname: {
-        type: DataTypes.STRING,
+    name: {
+        type: DataTypes.STRING(50),
         allowNull: false
     }
-}, { timestamps: false });
+});
 
 Category.sync().then(() => {
     console.log("Category Table Created...")

@@ -3,16 +3,20 @@ import sequelize from "../database/dbconfig.js";
 
 const Book = sequelize.define("book", {
     name: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(50),
+        allowNull: false,
+
     },
-    discription: {
-        type: DataTypes.STRING,
+    description: {
+        type: DataTypes.STRING(500),
         allowNull: false
     },
     author: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(50),
+        allowNull: false,
+        validation: {
+            isNumber: false
+        }
     },
     price: {
         type: DataTypes.INTEGER,
@@ -26,19 +30,22 @@ const Book = sequelize.define("book", {
         allowNull: false
     },
     language: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(20),
+        allowNull: false,
+        validate: {
+            isNumber: true
+        }
     },
     edition: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         allowNull: true
     },
-    photo: {
-        type: DataTypes.STRING,
+    photos: {
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
-    publication_date: {
-        type: DataTypes.STRING,
+    publicationDate: {
+        type: DataTypes.DATE,
         allowNull: false
     },
     userId: {
@@ -54,16 +61,22 @@ const Book = sequelize.define("book", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    pin_code: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    pinCode: {
+        type: DataTypes.INTEGER(6),
+        allowNull: false,
+        validate: {
+            isNumber: true
+        }
     },
     color: {
-        type: DataTypes.STRING,
-        allowNull: true
+        type: DataTypes.STRING(20),
+        allowNull: true,
+        validate: {
+            isNumber: false
+        }
     }
 
-}, { timestamps: false });
+});
 
 Book.sync().then(() => {
     console.log("Book Table Created...")

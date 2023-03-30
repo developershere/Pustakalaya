@@ -11,7 +11,7 @@ const Wishlist = sequelize.define("wishlist", {
         allowNull: false
     }
 
-}, { timestamps: false });
+});
 
 Wishlist.sync().then(() => {
     console.log("Wishlist Table Created...")

@@ -29,7 +29,7 @@ const History = sequelize.define("history", {
     }
 
 
-}, { timestamps: false });
+});
 
 History.sync().then(() => {
     console.log("History Table Created...")
