@@ -1,14 +1,12 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/getConnection.js";
 
-const City = sequelize.define("city", {
-    name: {
+const Category = sequelize.define("category", {
+    categoryName: {
         type: DataTypes.STRING,
         allowNull: false
     }
 });
 
 
-export default City;
-
-
+export default Category;

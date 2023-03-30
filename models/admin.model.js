@@ -3,11 +3,11 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/getConnection.js";
 const Admin =sequelize.define("admin",{
     name:{
-        type:DataTypes.STRING,
+        type:DataTypes.STRING(100),
         allowNull:false
     },
     email:{
-       type:DataTypes.STRING,
+       type:DataTypes.STRING(70),
        allowNull:false,
        unique:true,
        validate:{
@@ -20,10 +20,12 @@ const Admin =sequelize.define("admin",{
     },
     contact:{
         type:DataTypes.STRING(10),
-        allowNull:false
+        allowNull:false,
+        unique:true
     },
 
 });
 
+sequelize.sync().then(result=>{console.log(result)}).catch(err=>{console.log(err)});
 
 export default Admin;

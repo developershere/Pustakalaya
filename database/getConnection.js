@@ -1,9 +1,15 @@
-import { Sequelize } from 'sequelize';
-const sequelize = new Sequelize('pustakalaya','root','Mausam&123',{
-    host : 'localhost',
-    dialect : 'mysql'
+import mysql from "mysql2";
+import { Sequelize } from "sequelize";
+const sequelize = new Sequelize("pustakalaya","root","chetna22rathore",{
+    host:"localhost",
+    dialect:"mysql"
 });
-database.authenticate()
-.then(()=>console.log("Database Connected..."))
-.catch(err=>console.log("Database Error : "+err));
-    export default sequelize;
+
+
+sequelize.authenticate().then(()=>{
+    console.log("DataBase Connected");
+}).catch(()=>{
+    console.log("DataBase Not Connected...")
+})
+
+export default sequelize;
