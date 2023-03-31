@@ -15,7 +15,7 @@ const Admin =sequelize.define("admin",{
        }
     },
     password:{
-        type:DataTypes.STRING,
+        type:DataTypes.STRING(100),
         allowNull:false,
     },
     contact:{
@@ -26,6 +26,6 @@ const Admin =sequelize.define("admin",{
 
 });
 
-sequelize.sync().then(result=>{console.log(result)}).catch(err=>{console.log(err)});
+
 
 export default Admin;
