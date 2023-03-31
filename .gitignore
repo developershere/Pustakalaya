@@ -1,0 +1,6 @@
+/node_modules
+/database
+
+package-lock.json
+package.json
+/models/admin.model.js
