@@ -15,4 +15,4 @@ server.use("/category", CategoryRouters);
 server.use("/history", HistoryRouters);
 server.use("/wishlist", WishlistRouters);
 // server.use("/", RouteRoutes);
-server.listen(3000, () => console.log("Project Server Started..."));
+server.listen(3000, () => { console.log("Project Server Started...") });

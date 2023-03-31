@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { DataTypes } from "sequelize";
 import sequelize from "../database/dbconfig.js";
 
@@ -25,4 +26,13 @@ const Admin = sequelize.define("admin", {
 
 });
 
+=======
+import sequelize, { DataTypes } from "sequelize";
+const Admin = sequelize.define('admin',{
+    name : {
+        type : DataTypes.STRING,
+        allowNull : false
+    }
+})
+>>>>>>> master
 export default Admin;
