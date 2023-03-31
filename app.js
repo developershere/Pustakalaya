@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 
 app.use("/user", UserRouter);
 
-
 app.listen(3000,()=>{
 console.log("server Started");
 });

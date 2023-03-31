@@ -7,19 +7,19 @@ const Dilevery = sequelize.define("dilevery" , {
         autoIncrement : true
      },
      contactPerson : {
-        type : DataTypes.STRING,
+        type : DataTypes.STRING(200),
         allowNull : false
      },
      contactNumber : {
-        type : DataTypes.STRING,
+        type : DataTypes.STRING(10),
         allowNull : false,
     },
     address : {
-        type : DataTypes.STRING,
+        type : DataTypes.STRING(500),
         allowNull : false
     },
     date: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         defaultValue: new Date().toString().substring(4, 15).replaceAll(' ', '-')
     },
     billAmout : {
@@ -27,10 +27,10 @@ const Dilevery = sequelize.define("dilevery" , {
 
     },
     PaymentMode : {
-          type : DataTypes.STRING,
+          type : DataTypes.STRING(100),
       },
     status : {
-     type : DataTypes.STRING,
+     type : DataTypes.STRING(100),
 
     },
     userId : {

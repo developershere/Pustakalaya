@@ -2,6 +2,7 @@ import { request, response } from "express";
 import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 import User from "../model/user.model.js";
+import  jwt  from "jsonwebtoken";
 
 export const signup = async (request, response, next) => {
     console.log(request.body);
@@ -30,10 +31,13 @@ export const signin =  async (request,response,next)=>{
     })
      if(user){
           let status = await bcrypt.compare(request.body.password, user.password);
-          if(status)
-         return response.status(200).json({message : "login succsefull"});
-         return response.status(400).json({message : "bed request"});
-     }
+          if(status){
+         let payload = {subject : user.email}
+         let token = jwt.sign(payload, 'dssfdgdfgfsds')
+         return response.status(200).json({ token : token ,message : "login succsefull"});
+        }
+         return response.status(400).json({ message: "bed request" });
+    }
      else
       return response.status(400).json({message : "invalid email and password"})
      }

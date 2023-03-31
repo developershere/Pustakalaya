@@ -23,12 +23,14 @@ const History = sequelize.define("history",{
            allowNull : false
      },
      date: {
-     type: DataTypes.STRING,
+     type: DataTypes.STRING(100),
      defaultValue: new Date().toString().substring(4, 15).replaceAll(' ', '-')
      },
      bookStatus : {
      type : DataTypes.BOOLEAN
      } 
  });
+
+ 
 
  export default History

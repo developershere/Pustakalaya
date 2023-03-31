@@ -3,11 +3,12 @@ import sequelize from "../database/dbconfig.js";
 
 const User = sequelize.define("user", {
     name: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING(30),
+        allowNull: false,
+
     },
     email: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         allowNull: false,
         unique: true,
         validate: {
@@ -15,23 +16,27 @@ const User = sequelize.define("user", {
         }
     },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
     },
     contact: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         allowNull: false,
+        validate: {
+
+        }
 
     },
     photo: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
     },
-    status : {
-      type : DataTypes.BOOLEAN,
-      defaultValue : true   
+    status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
     }
 });
+
 
 
 

@@ -3,16 +3,11 @@ import sequelize from "../database/dbconfig.js";
 
 const Category = sequelize.define("category", {
     categoryName: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(200),
         allowNull: false
     }
 });
 
 
-sequelize.sync().then(() => {
-    console.log("category table is created");
-}).catch(err => {
-    console.log(err);
-});
 
 export default Category;
