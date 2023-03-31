@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/dbconfig.js";
 
-const Wishlist = sequelize.define("wishlist", {
+const Cart = sequelize.define("wishlist", {
     userId: {
         type: DataTypes.INTEGER,
         allowNull: false
@@ -15,4 +15,4 @@ const Wishlist = sequelize.define("wishlist", {
 
 
 
-export default Wishlist;
+export default Cart;
