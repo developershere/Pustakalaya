@@ -82,11 +82,4 @@ const Book = sequelize.define("book", {
     }
 
 });
-
-Book.sync().then(() => {
-    console.log("Book Table Created...")
-}).catch(() => {
-    console.log(err);
-})
-
 export default Book;

@@ -13,11 +13,6 @@ const Wishlist = sequelize.define("wishlist", {
 
 });
 
-Wishlist.sync().then(() => {
-    console.log("Wishlist Table Created...")
-}).catch(() => {
-    console.log(err);
 
-});
 
 export default Wishlist;

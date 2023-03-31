@@ -31,10 +31,5 @@ const History = sequelize.define("history", {
 
 });
 
-History.sync().then(() => {
-    console.log("History Table Created...")
-}).catch(() => {
-    console.log(err);
-})
 
 export default History;
