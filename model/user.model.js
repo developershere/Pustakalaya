@@ -26,14 +26,14 @@ const User = sequelize.define("user", {
     photo: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    status : {
+      type : DataTypes.BOOLEAN,
+      defaultValue : true   
     }
-},{timestamps : false});
-
-sequelize.sync().then(() => {
-    console.log("user table is created");
-}).catch(err => {
-    console.log(err);
 });
+
+
 
 
 export default User;

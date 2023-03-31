@@ -6,7 +6,7 @@ const Category = sequelize.define("category", {
         type: DataTypes.STRING,
         allowNull: false
     }
-}, { timestamps: false });
+});
 
 
 sequelize.sync().then(() => {
