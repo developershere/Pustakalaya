@@ -9,6 +9,5 @@ const WishList = sequelize.define("wishList",{
         autoIncrement:true
     }
 })
-
 export default WishList;
 

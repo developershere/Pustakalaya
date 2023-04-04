@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../database/dbconfig.js";
+import sequelize from "../database/getConnection.js";
 
 const Cart = sequelize.define("wishlist", {
     userId: {
@@ -12,7 +12,4 @@ const Cart = sequelize.define("wishlist", {
     }
 
 });
-
-
-
 export default Cart;

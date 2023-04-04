@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize } from "sequelize";
-import sequelize from "../database/dbconfig.js";
+import sequelize from "../database/getConnection.js";
 
 const User = sequelize.define("user", {
     name: {
@@ -36,9 +36,4 @@ const User = sequelize.define("user", {
         defaultValue: true
     }
 });
-
-
-
-
-
 export default User;

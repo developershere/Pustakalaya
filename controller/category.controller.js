@@ -1,19 +1,15 @@
 import Category from "../models/category.model.js"
 export const addCategory = async (request, response, next) => {
-    console.log(request.body);
     try {
       for (let category of request.body.category) {
         await Category.create({ name: category });
       }
       return response.status(200).json({ msg: "Add Category Succesfully", status: true });
   
-    } catch (err) {
-      console.log(err);
+    }catch(err){
       return response.status(500).json({ msg: "Internal Server Error", status: false });
     }
-  
   }
-  
   export const deleteCategory = async (request, response, next) => {
     console.log(request.body.id);
     try {
