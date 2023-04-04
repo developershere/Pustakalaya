@@ -1,7 +1,7 @@
 import { request, response } from "express";
 import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
-import User from "../model/user.model.js";
+import User from "../database/association.js";
 import  jwt  from "jsonwebtoken";
 
 export const signup = async (request, response, next) => {
@@ -45,4 +45,21 @@ export const signin =  async (request,response,next)=>{
       console.log(err);
       return response.status(500).json({ error: "Internal Server Error", status: false });
     }
+}
+export const userRemoveById = async (request, response, next) => {
+  console.log(request.params.id);
+  try {
+    let user = await User.findOne({ raw: true, where: { id: request.params.id } });
+    if (!user)
+      return response.status(404).json({ err: "Request Resource Not Found", status: false });
+    else {
+      let status = User.destroy({ raw: true, where: { id: request.params.id } });
+      if (status)
+        return response.status(200).json({ msg: "User Remove SuccesFully ", status: true });
+      return response.status(404).json({ err: "Request Resource Not Found", status: false });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
 }
