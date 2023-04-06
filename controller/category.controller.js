@@ -1,4 +1,4 @@
-import Category from "../models/category.model.js"
+import {Category} from "../database/association.js"
 export const addCategory = async (request, response, next) => {
     try {
       for (let category of request.body.category) {
@@ -6,7 +6,7 @@ export const addCategory = async (request, response, next) => {
       }
       return response.status(200).json({ msg: "Add Category Succesfully", status: true });
   
-    }catch(err){
+    } catch(err){
       return response.status(500).json({ msg: "Internal Server Error", status: false });
     }
   }

@@ -1,4 +1,4 @@
-import History from "../models/history.model.js";
+import {History} from "../database/association.js";
 export const viewOrderHistory = (request, response, next) => {
     History.findAll().then(result => {
       return response.status(200).json({ history: result, msg: "Your All History", status: true })
@@ -6,7 +6,6 @@ export const viewOrderHistory = (request, response, next) => {
       return response.status(500).json({ err: "Internal Server Error", status: false });
     })
   }
-  
   
   export const viewOrderHistoryByuserId = (request, response, next) => {
     History.findByPk({ where: { id: request.params.id } }).then(result => {

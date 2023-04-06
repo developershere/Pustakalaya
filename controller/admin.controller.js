@@ -1,9 +1,6 @@
 import { validationResult } from "express-validator";
 import Admin from "../models/admin.model.js";
 import bcrypt from "bcryptjs";
-
-import {User} from "../database/association.js";
-import {Category} from "../database/association.js";
 export const signUp = async (request, response, next) => {
   try {
 
