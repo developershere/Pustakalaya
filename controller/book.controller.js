@@ -59,3 +59,22 @@ export const deleteBookById = async(req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
+
+export const updateBookById = async(req, res) => {
+    const bookId = req.params.id;
+    try {
+        const [updated] = await Book.update(req.body, {
+            where: {
+                id: bookId
+            }
+        });
+        if (updated) {
+            const updatedBook = await Book.findByPk(bookId);
+            res.status(200).json(updatedBook);
+        } else {
+            res.status(404).json({ message: 'Book not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
