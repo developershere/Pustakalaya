@@ -65,58 +65,52 @@ export const userRemoveById = async(request, response, next) => {
 
 }
 
-// ------------------------------------------------------------------------------------
 
-//const { User } = require('../models'); // assuming your User model is defined in a 'models' directory
 
-// Controller method to initiate password reset
-export const forgotPassword = async(req, res) => {
-    const { email } = req.body;
+// export const forgotPassword = async(req, res) => {
+//     const { email } = req.body;
 
-    try {
-        const user = await User.findOne({ where: { email } });
+//     try {
+//         const user = await User.findOne({ where: { email } });
 
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
+//         if (!user) {
+//             return res.status(404).json({ message: 'User not found' });
+//         }
 
-        // Generate a password reset code (e.g. a UUID) and save it to the user's record
-        const resetCode = uuid(); // assuming you have the uuid library installed
-        await user.update({ resetCode });
 
-        // Send an email to the user with a link to the password reset page, including the reset code as a query parameter
-        const resetLink = `https://example.com/reset-password?code=${resetCode}`;
-        sendPasswordResetEmail(email, resetLink); // assuming you have a function to send emails
+//         const resetCode = uuid();
+//         await user.update({ resetCode });
 
-        res.json({ message: 'Password reset initiated. Check your email for further instructions.' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Server error' });
-    }
-};
 
-// Controller method to complete password reset
-export const resetPassword = async(req, res) => {
-    const { code, password } = req.body;
+//         const resetLink = `https://example.com/reset-password?code=${resetCode}`;
+//         sendPasswordResetEmail(email, resetLink); 
 
-    try {
-        const user = await User.findOne({ where: { resetCode: code } });
+//         res.json({ message: 'Password reset initiated. Check your email for further instructions.' });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ message: 'Server error' });
+//     }
+// };
 
-        if (!user) {
-            return res.status(404).json({ message: 'Invalid or expired reset code' });
-        }
+// export const resetPassword = async(req, res) => {
+//     const { code, password } = req.body;
 
-        // Update the user's password and clear the reset code
-        await user.update({ password, resetCode: null });
+//     try {
+//         const user = await User.findOne({ where: { resetCode: code } });
 
-        res.json({ message: 'Password reset successful' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Server error' });
-    }
-};
+//         if (!user) {
+//             return res.status(404).json({ message: 'Invalid or expired reset code' });
+//         }
 
-// ----------------------------------------------------------------------------
+
+//         await user.update({ password, resetCode: null });
+
+//         res.json({ message: 'Password reset successful' });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ message: 'Server error' });
+//     }
+// };
 
 export const getUserById = async(req, res) => {
     const userId = req.params.id;
@@ -147,5 +141,3 @@ export const updateUserById = async(req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
-
-// ---------------------------------------------------------------
