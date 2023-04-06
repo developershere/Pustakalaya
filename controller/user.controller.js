@@ -1,11 +1,9 @@
-import { request, response } from "express";
 import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
-import User from "../database/association.js";
+import {User} from "../database/association.js";
 import  jwt  from "jsonwebtoken";
-
+import email  from "../services/mail.js";
 export const signup = async (request, response, next) => {
-    console.log(request.body);
     try {
         const errors = await validationResult(request);
         if (!errors.isEmpty())
@@ -13,11 +11,25 @@ export const signup = async (request, response, next) => {
         let soltkey = await bcrypt.genSalt(15);
         let encryptedPassword = await bcrypt.hash(request.body.password, soltkey);
         request.body.password = encryptedPassword;
-        const user = await User.create(request.body);
-        return response.status(200).json({ user: user, status: true });
+        let x = Math.floor((Math.random() * 9999) + 1000);
+        var time = new Date().getMinutes();
+        const otp = email(request.body.email,"Mausam lodhi",request.body.name,470115);
+        if(new Date().getMinutes()<=time+5)
+        {
+          if(request.body.otp==470115)
+          {
+            const user = await User.create(request.body);
+            return response.status(200).json({ user: user, status: true });
+          }
+          else
+            return response.status(400).json({message : "OTP is mismetched...",status:false});
+        }
+        else
+          return response.status(400).json({message : "OTP is Expires",status:false});
+        console.log(otp);
     }
     catch (err) {
-        return response.status(500), json({ message: "Internal server Error" });
+        return response.status(500).json({ message: "Internal server Error",status:false});
     }
 } 
 
@@ -34,12 +46,12 @@ export const signin =  async (request,response,next)=>{
           if(status){
          let payload = {subject : user.email}
          let token = jwt.sign(payload, 'dssfdgdfgfsds')
-         return response.status(200).json({ token : token ,message : "login succsefull"});
+         return response.status(200).json({ token : token ,message : "login succsefull",status:true});
         }
-         return response.status(400).json({ message: "bed request" });
+         return response.status(400).json({ message: "bed request",status:false});
     }
      else
-      return response.status(400).json({message : "invalid email and password"})
+      return response.status(400).json({message : "invalid email and password",status:false})
      }
     catch(err){
       console.log(err);
@@ -61,5 +73,4 @@ export const userRemoveById = async (request, response, next) => {
   } catch (err) {
     console.log(err);
   }
-
 }

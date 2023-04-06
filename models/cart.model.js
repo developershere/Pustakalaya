@@ -5,11 +5,9 @@ const Cart = sequelize.define("wishlist", {
     userId: {
         type: DataTypes.INTEGER,
         allowNull: false
-    },
-    bookId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
     }
-
 });
+
+
+
 export default Cart;

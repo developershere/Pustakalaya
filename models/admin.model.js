@@ -24,4 +24,9 @@ const Admin = sequelize.define("admin", {
     },
 
 });
+sequelize.sync()
+.then(()=>{
+    console.log(" Admin Table created...")
+})
+.catch(err=>console.log(err));
 export default Admin;
