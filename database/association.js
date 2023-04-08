@@ -14,14 +14,18 @@ Category.hasMany(Book,{
 Book.belongsTo(Category,{
     foreignKey: "categoryID", targetKey: "id"
 });
+User.hasOne(Book,{foreignKey:'id'});
+Book.belongsTo(User,{foreignKey:"userId",targetKey:"id"});
+City.hasMany(Book,{foreignkey:"id"});
+Book.belongsTo(City,{foreignKey:"cidtyId",targetKey:"id"});
 State.hasMany(City,{foreignKey:'id'});
 City.belongsTo(State,{foreignKey:'stateId',targetKey: 'id'});
 User.hasOne(Order,{foreignKey:'id'});
 Order.belongsTo(User,{foreignKey:'userId',targetKey:'id'});
 Order.belongsToMany(User,{through:Orders});
 Order.belongsToMany(Book,{through:Orders});
-History.hasOne(User,{foreignKey:'id'});
-User.belongsTo(User,{foreignKey:'userId',targetKey:'id'})
+User.hasOne(History,{foreignKey:'id'});
+History.belongsTo(User,{foreignKey:'userId',targetKey:'id'})
 History.hasOne(Order,{foreignKey:'id'});
 Order.belongsTo(History,{foreignKey:'orderId',targetKey:'id'});
 export {Category,Book,User,Order,City,State,History};
