@@ -1,7 +1,7 @@
 import {Category} from "../database/association.js"
 export const addCategory = async (request, response, next) => {
     try {
-      for (let category of request.body.category) {
+      for (let category of request.body) {
         await Category.create({ name: category });
       }
       return response.status(200).json({ msg: "Add Category Succesfully", status: true });

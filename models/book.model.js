@@ -13,17 +13,11 @@ const Book = sequelize.define("book", {
     },
     author: {
         type: DataTypes.STRING(50),
-        allowNull: false,
-        validation: {
-            isNumber: false
-        }
+        allowNull: false
     },
     price: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            isNumber: true
-        }
+        allowNull: false
     },
     categoryID: {
         type: DataTypes.INTEGER,
@@ -31,10 +25,7 @@ const Book = sequelize.define("book", {
     },
     language: {
         type: DataTypes.STRING(20),
-        allowNull: false,
-        validate: {
-            isNumber: true
-        }
+        allowNull: false
     },
     edition: {
         type: DataTypes.STRING(10),
@@ -54,7 +45,6 @@ const Book = sequelize.define("book", {
     },
     status: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
         default: true
     },
     cityId: {
@@ -63,22 +53,15 @@ const Book = sequelize.define("book", {
     },
     permission: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
-        default: false
+          default: false
     },
     pinCode: {
         type: DataTypes.INTEGER(6),
-        allowNull: false,
-        validate: {
-            isNumber: true
-        }
+        allowNull: false
     },
     color: {
         type: DataTypes.STRING(20),
-        allowNull: true,
-        validate: {
-            isNumber: false
-        }
+        allowNull: true
     }
 
 });
