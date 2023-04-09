@@ -16,8 +16,9 @@ export const addBook = async (request,response,next)=>{
 }
 export const removeBook = async (request,response,next)=>{
     try{
-        let book = await Book.update({where : {id : request.params.id}},{status:false});
-        console.log("Book Remove : "+book);
+        let status = await Book.findOne();
+        let book = await Book.update({status:false},{where:{id : request.params.id}},);
+        return book?response.status(200).json({Message : "Book has been removed...",status:true}):response.status(400).json({Message : "Bad request",status:false});
     }
     catch(err)
     {
